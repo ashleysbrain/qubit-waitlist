@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUBIT — 8D Wellness, One Click Away</title>
+    <meta name="description" content="QUBIT is the first wellness app that treats your whole life as one interconnected system. 8 dimensions. Zero guesswork. Join the waitlist.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f0f0f;
+            --text: #f5f5f5;
+            --muted: #a1a1aa;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+        .dimension-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+        .dimension {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 0.5rem;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .dimension:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-2px);
+        }
+        .dimension-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .cta-section {
+            margin-bottom: 2rem;
+        }
+        .waitlist-form {
+            display: flex;
+            gap: 0.75rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input[type="email"] {
+            flex: 1;
+            padding: 0.875rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            font-size: 1rem;
+        }
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        button {
+            padding: 0.875rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+        .social-proof {
+            color: var(--muted);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            text-align: left;
+            margin-top: 2.5rem;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .feature-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+        footer {
+            margin-top: 3rem;
+            color: var(--muted);
+            font-size: 0.75rem;
+        }
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .dimension-grid { grid-template-columns: repeat(2, 1fr); }
+            .waitlist-form { flex-direction: column; }
+            .features { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QUBIT</h1>
+        <p class="tagline">8D wellness, one click away</p>
+
+        <div class="dimension-grid">
+            <div class="dimension">
+                <div class="dimension-icon">🧠</div>
+                <div>Intellectual</div>
+            </div>
+            <div class="dimension">
+                <div class="dimension-icon">💪</div>
+                <div>Physical</div>
+            </div>
+            <div class="dimension">
+                <div class="dimension-icon">❤️</div>
+                <div>Emotional</div>
+            </div>
+            <div class="dimension">
+                <div class="dimension-icon">👥</div>
+                <div>Social</div>
+            </div>
+            <div class="dimension">
+                <div class="dimension-icon">💼</div>
+                <div>Vocational</div>
+            </div>
+            <div class="dimension">
+                <div class="dimension-icon">💰</div>
+                <div>Financial</div>
+            </div>
+            <div class="dimension">
+                <div class="dimension-icon">🌍</div>
+                <div>Environmental</div>
+            </div>
+            <div class="dimension">
+                <div class="dimension-icon">✨</div>
+                <div>Spiritual</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+            <p class="social-proof">Be first to know when QUBIT launches.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-title">One Score, 8 Dimensions</div>
+                <div class="feature-desc">Stop guessing. See your total wellness at a glance.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">Gamified Growth</div>
+                <div class="feature-desc">Earn XP. Complete quests. Level up your life.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">ADHD-First Design</div>
+                <div class="feature-desc">Built for neurodivergent brains. No friction.</div>
+            </div>
+            <div class="feature">
+                <div class="feature-title">Science-Backed</div>
+                <div class="feature-desc">Every metric rooted in peer-reviewed research.</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>From <a href="https://divinityscience.com">Divinity Science</a> & <a href="https://qubithealth.com">Qubit Health</a></p>
+        </footer>
+    </div>
+</body>
+</html>
