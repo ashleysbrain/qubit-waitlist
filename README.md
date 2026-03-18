@@ -17,7 +17,7 @@
 
 ## Structure
 
-- `index.html` — Waitlist landing page
+- `index.html` ,  Waitlist landing page
 - Uses Formspree for email collection (no backend needed)
 
 ---
