@@ -3,222 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUBIT — 8D Wellness, One Click Away</title>
-    <meta name="description" content="QUBIT is the first wellness app that treats your whole life as one interconnected system. 8 dimensions. Zero guesswork. Join the waitlist.">
+    <title>Divinity Science — Wellness Tools for Minds That Work Differently</title>
+    <meta name="description" content="Practical digital wellness tools for ADHD, BP2, and neurodivergent minds. 8D Life Audit, Crisis First Aid Kit, ADHD Email Templates, and more.">
+    <meta name="keywords" content="wellness, ADHD, bipolar, neurodivergent, mental health, self-care, 8D, life audit">
+    <meta property="og:title" content="Divinity Science — Wellness Tools for Minds That Work Differently">
+    <meta property="og:description" content="Practical digital wellness tools built by someone who gets it. ADHD email templates, BP2 prevention playbooks, crisis kits, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qubit.divinityscience.com">
+    <link rel="canonical" href="https://qubit.divinityscience.com">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
-            --bg: #0f0f0f;
+            --primary-light: #818cf8;
+            --accent: #8b5cf6;
+            --bg: #0a0a0b;
+            --surface: #141416;
+            --surface-hover: #1c1c1f;
             --text: #f5f5f5;
             --muted: #a1a1aa;
+            --border: rgba(255,255,255,0.08);
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+            line-height: 1.6;
         }
-        .container {
-            max-width: 600px;
+
+        /* Nav */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(10,10,11,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.875rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-brand {
+            font-size: 1.1rem; font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; gap: 1.5rem; font-size: 0.9rem; }
+        .nav-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); }
+
+        /* Hero */
+        .hero {
             text-align: center;
+            padding: 5rem 2rem 3rem;
+            max-width: 800px; margin: 0 auto;
         }
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
+        .hero h1 {
+            font-size: 3rem; font-weight: 800;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.25rem; color: var(--muted);
+            max-width: 600px; margin: 0 auto 2rem;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(34,197,94,0.15); color: var(--success);
+            padding: 0.375rem 0.875rem; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .dimension-pills {
+            display: flex; flex-wrap: wrap; justify-content: center;
+            gap: 0.5rem; margin-top: 1rem;
+        }
+        .pill {
+            background: rgba(99,102,241,0.1);
+            border: 1px solid rgba(99,102,241,0.2);
+            padding: 0.375rem 0.75rem; border-radius: 20px;
+            font-size: 0.8rem; color: var(--primary-light);
+        }
+
+        /* Products Grid */
+        .products-section {
+            max-width: 1100px; margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+        .section-header {
+            text-align: center; margin-bottom: 2.5rem;
+        }
+        .section-header h2 {
+            font-size: 2rem; font-weight: 700;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--muted);
-            margin-bottom: 2rem;
-        }
-        .dimension-grid {
+        .section-header p { color: var(--muted); }
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
         }
-        .dimension {
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 8px;
-            padding: 0.75rem 0.5rem;
-            font-size: 0.8rem;
-            transition: all 0.2s;
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            transition: all 0.25s;
+            display: flex; flex-direction: column;
         }
-        .dimension:hover {
-            background: rgba(99, 102, 241, 0.2);
-            transform: translateY(-2px);
+        .product-card:hover {
+            border-color: rgba(99,102,241,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(99,102,241,0.1);
         }
-        .dimension-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.25rem;
+        .product-badge {
+            display: inline-block;
+            font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            padding: 0.25rem 0.625rem; border-radius: 4px;
+            margin-bottom: 0.75rem; width: fit-content;
         }
-        .cta-section {
-            margin-bottom: 2rem;
+        .badge-wellness { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .badge-neurodivergent { background: rgba(99,102,241,0.15); color: #818cf8; }
+        .badge-mental-health { background: rgba(239,68,68,0.15); color: #f87171; }
+        .badge-crisis { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .product-title {
+            font-size: 1.2rem; font-weight: 700;
+            margin-bottom: 0.5rem;
         }
-        .waitlist-form {
-            display: flex;
-            gap: 0.75rem;
-            max-width: 400px;
-            margin: 0 auto;
+        .product-desc {
+            color: var(--muted); font-size: 0.9rem;
+            margin-bottom: 1rem; flex-grow: 1;
         }
-        input[type="email"] {
-            flex: 1;
-            padding: 0.875rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text);
-            font-size: 1rem;
+        .product-features {
+            list-style: none; margin-bottom: 1.25rem;
         }
-        input[type="email"]:focus {
-            outline: none;
-            border-color: var(--primary);
+        .product-features li {
+            font-size: 0.85rem; color: var(--muted);
+            padding: 0.25rem 0;
+            padding-left: 1.25rem;
+            position: relative;
         }
-        button {
-            padding: 0.875rem 1.5rem;
+        .product-features li::before {
+            content: "✓";
+            position: absolute; left: 0;
+            color: var(--success); font-weight: 700;
+        }
+        .product-footer {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: auto; padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .product-price {
+            font-size: 1.5rem; font-weight: 800;
+        }
+        .buy-btn {
+            padding: 0.625rem 1.25rem;
             background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
+            color: white; border: none; border-radius: 8px;
+            font-size: 0.9rem; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+            text-decoration: none;
         }
-        button:hover {
+        .buy-btn:hover {
             background: var(--primary-dark);
             transform: translateY(-1px);
         }
-        .social-proof {
-            color: var(--muted);
-            font-size: 0.875rem;
-            margin-top: 1rem;
+        .buy-btn.sold-out {
+            background: rgba(255,255,255,0.05);
+            color: var(--muted); cursor: default;
         }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            text-align: left;
-            margin-top: 2.5rem;
+
+        /* Waitlist */
+        .waitlist-section {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 4rem 2rem; text-align: center;
         }
-        .feature {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        .waitlist-section h2 {
+            font-size: 1.75rem; font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .waitlist-section p {
+            color: var(--muted); margin-bottom: 1.5rem;
+        }
+        .waitlist-form {
+            display: flex; gap: 0.75rem;
+            max-width: 420px; margin: 0 auto;
+        }
+        input[type="email"] {
+            flex: 1; padding: 0.875rem 1rem;
             border-radius: 8px;
-            padding: 1rem;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            color: var(--text); font-size: 1rem;
         }
-        .feature-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+        input[type="email"]:focus { outline: none; border-color: var(--primary); }
+        .submit-btn {
+            padding: 0.875rem 1.5rem;
+            background: var(--primary); color: white;
+            border: none; border-radius: 8px;
+            font-size: 1rem; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+            white-space: nowrap;
         }
-        .feature-desc {
-            font-size: 0.85rem;
-            color: var(--muted);
+        .submit-btn:hover { background: var(--primary-dark); }
+
+        /* About */
+        .about-section {
+            max-width: 700px; margin: 0 auto;
+            padding: 4rem 2rem; text-align: center;
         }
+        .about-section h2 {
+            font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;
+        }
+        .about-section p {
+            color: var(--muted); font-size: 1rem; line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
         footer {
-            margin-top: 3rem;
-            color: var(--muted);
-            font-size: 0.75rem;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted); font-size: 0.8rem;
         }
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .dimension-grid { grid-template-columns: repeat(2, 1fr); }
+        footer a { color: var(--primary-light); text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .products-grid { grid-template-columns: 1fr; }
             .waitlist-form { flex-direction: column; }
-            .features { grid-template-columns: 1fr; }
+            nav { padding: 0.75rem 1rem; }
+            .nav-links { gap: 1rem; font-size: 0.8rem; }
         }
     </style>
+
+    <!-- Gumroad Overlay (loads purchase overlay for buy buttons) -->
+    <script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>QUBIT</h1>
-        <p class="tagline">8D wellness, one click away</p>
 
-        <div class="dimension-grid">
-            <div class="dimension">
-                <div class="dimension-icon">🧠</div>
-                <div>Intellectual</div>
-            </div>
-            <div class="dimension">
-                <div class="dimension-icon">💪</div>
-                <div>Physical</div>
-            </div>
-            <div class="dimension">
-                <div class="dimension-icon">❤️</div>
-                <div>Emotional</div>
-            </div>
-            <div class="dimension">
-                <div class="dimension-icon">👥</div>
-                <div>Social</div>
-            </div>
-            <div class="dimension">
-                <div class="dimension-icon">💼</div>
-                <div>Vocational</div>
-            </div>
-            <div class="dimension">
-                <div class="dimension-icon">💰</div>
-                <div>Financial</div>
-            </div>
-            <div class="dimension">
-                <div class="dimension-icon">🌍</div>
-                <div>Environmental</div>
-            </div>
-            <div class="dimension">
-                <div class="dimension-icon">✨</div>
-                <div>Spiritual</div>
-            </div>
-        </div>
-
-        <div class="cta-section">
-            <form class="waitlist-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                <input type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit">Join Waitlist</button>
-            </form>
-            <p class="social-proof">Be first to know when QUBIT launches.</p>
-        </div>
-
-        <div class="features">
-            <div class="feature">
-                <div class="feature-title">One Score, 8 Dimensions</div>
-                <div class="feature-desc">Stop guessing. See your total wellness at a glance.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">Gamified Growth</div>
-                <div class="feature-desc">Earn XP. Complete quests. Level up your life.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">ADHD-First Design</div>
-                <div class="feature-desc">Built for neurodivergent brains. No friction.</div>
-            </div>
-            <div class="feature">
-                <div class="feature-title">Science-Backed</div>
-                <div class="feature-desc">Every metric rooted in peer-reviewed research.</div>
-            </div>
-        </div>
-
-        <footer>
-            <p>From <a href="https://divinityscience.com">Divinity Science</a> & <a href="https://qubithealth.com">Qubit Health</a></p>
-        </footer>
+<!-- Navigation -->
+<nav>
+    <div class="nav-brand">Divinity Science</div>
+    <div class="nav-links">
+        <a href="#products">Products</a>
+        <a href="#waitlist">QUBIT App</a>
+        <a href="#about">About</a>
     </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-badge">✦ Now Available — Digital Downloads</div>
+    <h1>Wellness Tools That Actually Work</h1>
+    <p>Practical, no-fluff digital tools built by someone who lives with ADHD and BP2. Not theory — real coping systems you can use today.</p>
+    <div class="dimension-pills">
+        <span class="pill">🧠 Psychological</span>
+        <span class="pill">💪 Physical</span>
+        <span class="pill">✨ Spiritual</span>
+        <span class="pill">👥 Social</span>
+        <span class="pill">💼 Vocational</span>
+        <span class="pill">💰 Financial</span>
+        <span class="pill">🌍 Environmental</span>
+        <span class="pill">📚 Intellectual</span>
+    </div>
+</section>
+
+<!-- Products -->
+<section class="products-section" id="products">
+    <div class="section-header">
+        <h2>Digital Products</h2>
+        <p>Download instantly. Use immediately. No subscriptions required.</p>
+    </div>
+
+    <div class="products-grid">
+
+        <!-- Product 1: 8D Life Audit -->
+        <div class="product-card">
+            <span class="product-badge badge-wellness">Wellness</span>
+            <div class="product-title">8D Life Audit Worksheets</div>
+            <div class="product-desc">
+                Score all 8 dimensions of your wellness, calculate your Total Wellness Coefficient, and build a 90-day action plan. Not a generic quiz — a working document you sit with.
+            </div>
+            <ul class="product-features">
+                <li>8 structured self-assessment grids</li>
+                <li>Total Wellness Coefficient scoring (1-10)</li>
+                <li>5 reflection questions per dimension</li>
+                <li>90-day action plan template</li>
+                <li>Bonus 8D Daily Tracker</li>
+            </ul>
+            <div class="product-footer">
+                <span class="product-price">$39</span>
+                <a href="https://divinityscience.gumroad.com/l/8d-life-audit" class="buy-btn gumroad-button">Buy Now</a>
+            </div>
+        </div>
+
+        <!-- Product 2: ADHD Email Templates -->
+        <div class="product-card">
+            <span class="product-badge badge-neurodivergent">Neurodivergent</span>
+            <div class="product-title">ADHD Email Templates: 47 Ready-to-Send Scripts</div>
+            <div class="product-desc">
+                Email paralysis is real. These 47 templates are built for the ADHD brain — short, structured, with [BRACKETED] fill-ins. Spend 30 seconds, not 30 minutes.
+            </div>
+            <ul class="product-features">
+                <li>47 templates across 6 real-life categories</li>
+                <li>Subject lines + body copy included</li>
+                <li>ADHD-specific section (accommodations, time blindness)</li>
+                <li>Power Phrases quick reference</li>
+                <li>2-Minute Email Rule guide</li>
+            </ul>
+            <div class="product-footer">
+                <span class="product-price">$19</span>
+                <a href="https://divinityscience.gumroad.com/l/adhd-email-templates" class="buy-btn gumroad-button">Buy Now</a>
+            </div>
+        </div>
+
+        <!-- Product 3: BP2 Playbook -->
+        <div class="product-card">
+            <span class="product-badge badge-mental-health">Mental Health</span>
+            <div class="product-title">BP2 Episode Prevention Playbook</div>
+            <div class="product-desc">
+                Build your personal early warning system. Written by someone who actually lives with Bipolar 2 — catch episodes before they catch you.
+            </div>
+            <ul class="product-features">
+                <li>Personal baseline template</li>
+                <li>Hypomania & depression warning sign profiles</li>
+                <li>Yellow/Orange/Red tiered response protocols</li>
+                <li>Sleep recovery protocol</li>
+                <li>30-day daily mood tracking log</li>
+            </ul>
+            <div class="product-footer">
+                <span class="product-price">$29</span>
+                <a href="https://divinityscience.gumroad.com/l/bp2-playbook" class="buy-btn gumroad-button">Buy Now</a>
+            </div>
+        </div>
+
+        <!-- Product 4: Crisis First Aid Kit -->
+        <div class="product-card">
+            <span class="product-badge badge-crisis">Crisis Support</span>
+            <div class="product-title">Crisis First Aid Kit</div>
+            <div class="product-desc">
+                Step-by-step emergency protocols for panic attacks, anxiety spirals, dissociation, self-harm urges, and suicidal thoughts. Designed to be used when you're in it.
+            </div>
+            <ul class="product-features">
+                <li>6 distinct crisis type protocols</li>
+                <li>Box breathing + 5-4-3-2-1 grounding</li>
+                <li>Self-harm urge delay strategy</li>
+                <li>Personal safety plan template</li>
+                <li>Aftercare guide (0-24hr, 24-72hr, 1wk+)</li>
+            </ul>
+            <div class="product-footer">
+                <span class="product-price">$24</span>
+                <a href="https://divinityscience.gumroad.com/l/crisis-first-aid" class="buy-btn gumroad-button">Buy Now</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Waitlist for QUBIT App -->
+<section class="waitlist-section" id="waitlist">
+    <h2>QUBIT — 8D Wellness, One Click Away</h2>
+    <p>The upcoming app that scores your 8 dimensions daily and gives you real-time wellness intelligence. Join the waitlist.</p>
+    <form class="waitlist-form" action="https://formspree.io/f/xvoewkdl" method="POST">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <button type="submit" class="submit-btn">Join Waitlist</button>
+    </form>
+</section>
+
+<!-- About -->
+<section class="about-section" id="about">
+    <h2>About Divinity Science</h2>
+    <p>
+        Divinity Science builds wellness tools for minds that work differently. Founded by Ashley Williams — who lives with ADHD, BP2, and the daily reality of managing 8 dimensions of wellness while building a company.
+    </p>
+    <p>
+        Every product comes from lived experience, not textbooks. If it doesn't work during a bad week, it doesn't ship.
+    </p>
+    <p style="margin-top: 1.5rem;">
+        <a href="mailto:ashley.williams@divinityscience.com" style="color: var(--primary-light);">ashley.williams@divinityscience.com</a>
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2026 Divinity Science. All rights reserved.</p>
+    <p style="margin-top: 0.5rem;">
+        If you're in crisis, please reach out: 
+        <a href="tel:988">988 Suicide & Crisis Lifeline</a> · 
+        <a href="https://www.crisistextline.org/">Crisis Text Line: text HOME to 741741</a>
+    </p>
+</footer>
+
+<!-- Gumroad purchase tracking -->
+<script>
+    // Track purchase intent
+    document.querySelectorAll('.gumroad-button').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (typeof gtag === 'function') {
+                gtag('event', 'begin_checkout', {
+                    items: [{ name: this.closest('.product-card').querySelector('.product-title').textContent }]
+                });
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
